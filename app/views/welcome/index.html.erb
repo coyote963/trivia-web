@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+    <%= react_component 'Main', user: current_user %>
+<% else %>
+    <h1> Hi Welcome to trivia, please log in or register to play </h1>
+<% end %>
