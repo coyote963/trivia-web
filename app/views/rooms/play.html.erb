@@ -1,7 +1,14 @@
 <h1>Welcome to play area</h1>
 <%= @question.problem %>
-<p><strong>A. </strong><%= @answers[0] %></p>
-<p><strong>B. </strong><%= @answers[1] %></p>
-<p><strong>C. </strong><%= @answers[2] %></p>
-<p><strong>D. </strong><%= @answers[3] %></p>
-
+<%= form_tag do |f| %>
+    <h3>Select the best answer</h3>
+    <input id="answer-a" name="answer" type="radio" value="<%= @answers[0] %>" />  
+    <label for="answer-a"><%= @answers[0] %></label>
+    <input id="answer-b" name="answer" type="radio" value="<%= @answers[1] %>" />  
+    <label for="answer-b"><%= @answers[1] %></label>
+    <input id="answer-c" name="answer" type="radio" value="<%= @answers[2] %>" />  
+    <label for="answer-c"><%= @answers[2] %></label>
+    <input id="answer-d" name="answer" type="radio" value="<%= @answers[3] %>" />  
+    <label for="answer-d"><%= @answers[3] %></label>
+    <input type="submit" value="answer">
+<% end %>

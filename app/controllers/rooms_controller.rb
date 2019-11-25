@@ -86,6 +86,12 @@ class RoomsController < ApplicationController
     @answers = [@question.incorrect_answer_one, @question.incorrect_answer_two, @question.incorrect_answer_three, @question.correct_answer].shuffle
   end
 
+  # POST /rooms/play/:id/:question
+  def answer
+    next_page = params[:question].to_i + 1
+    redirect_to action: 'play', id: params[:id], question: next_page.to_s
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
