@@ -2,6 +2,7 @@
 <%= @question.problem %>
 <%= form_tag do |f| %>
     <h3>Select the best answer</h3>
+    <input type="hidden" id="questionId" name="questionId" value="<%= @question.id %>">
     <input id="answer-a" name="answer" type="radio" value="<%= @answers[0] %>" />  
     <label for="answer-a"><%= @answers[0] %></label>
     <input id="answer-b" name="answer" type="radio" value="<%= @answers[1] %>" />  

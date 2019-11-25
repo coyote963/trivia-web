@@ -1,0 +1,5 @@
+<h1>Results</h1>
+<%= @results.each do |result| %>
+    <h1><%= result.answer %></h1>
+    <p><%= result.iscorrect %></h1></p>
+<% end %>

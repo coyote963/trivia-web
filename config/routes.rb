@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   post 'rooms/play/:id/:question', to: 'rooms#answer'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #resources :selections 
+
+  get 'selections/:room_id', to: 'selections#index'
 end

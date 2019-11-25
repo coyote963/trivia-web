@@ -88,8 +88,27 @@ class RoomsController < ApplicationController
 
   # POST /rooms/play/:id/:question
   def answer
+    
+    @question_id = params[:question]
     next_page = params[:question].to_i + 1
-    redirect_to action: 'play', id: params[:id], question: next_page.to_s
+    if next_page < 7
+      question = Question.find(params[:questionId].to_i)
+      iscorrect = params['answer'].eql? question.correct_answer
+      Selection.create(
+        user_id: current_user.id,
+        question_id: params['question_id'].to_i,
+        answer: params['answer'],
+        iscorrect: iscorrect
+      ) do |s|
+        puts "WHEREE"
+        s.validate!
+        puts s.errors.full_messages
+      end
+      puts "CREATED"
+      redirect_to action: 'play', id: params[:id], question: next_page.to_s
+    else
+      redirect_to '/selections/' + params[:id]
+    end
   end
 
   private
