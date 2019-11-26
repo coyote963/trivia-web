@@ -16,9 +16,10 @@ class SelectionsController < ApplicationController
         @questions = Question.where(:room_id => params[:room_id])
         @results = []
         for question in @questions
-            selection = Selection.where(:question_id => question.id)
+            selection = Selection.where(:question_id => question.id).first
             @results.push(selection)
         end
-        pp @results
+        @results.shift
+        @results.pop
     end
 end

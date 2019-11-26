@@ -92,11 +92,11 @@ class RoomsController < ApplicationController
     @question_id = params[:question]
     next_page = params[:question].to_i + 1
     if next_page < 7
-      question = Question.find(params[:questionId].to_i)
+      question = Question.where(:room_id => params[:id])[params[:question].to_i]
       iscorrect = params['answer'].eql? question.correct_answer
       Selection.create(
         user_id: current_user.id,
-        question_id: params['question_id'].to_i,
+        question_id: question.id,
         answer: params['answer'],
         iscorrect: iscorrect
       ) do |s|
